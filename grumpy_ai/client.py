@@ -67,10 +67,13 @@ class GrumpyClient:
             "code_context": context_str,
             "environment": self.environment
         }
+        headers = {
+            "X-API-Key": self.api_key
+        }
         
         try:
             print(f"\n[Grumpy.ai] Catching {exc_type.__name__}... shipping to SRE engine.")
-            resp = requests.post(self.ingest_url, json=payload, timeout=5)
+            resp = requests.post(self.ingest_url, json=payload, headers=headers, timeout=5)
             if resp.status_code == 200:
                 data = resp.json()
                 if data.get("status") == "deduplicated":
