@@ -1,4 +1,4 @@
-# Grumpy.ai Python SDK
+# Grumpy Python SDK
 
 Zero-config AI SRE teammate that aggressively complains about your crashes.
 

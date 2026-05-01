@@ -21,6 +21,16 @@ class GrumpyClient:
         # Override the global exception hook
         self._original_excepthook = sys.excepthook
         sys.excepthook = self._grumpy_excepthook
+        
+        # Ping the backend to auto-resolve old errors on deployment/startup
+        try:
+            import requests
+            headers = {"X-API-Key": self.api_key}
+            requests.post(f"{self.host}/api/v1/ingest/ping", headers=headers, timeout=3)
+        except Exception as e:
+            # Silently fail so we don't break the host app if the network is down
+            pass
+            
         print(f"Grumpy.ai initialized for {self.app_name} ({self.environment}). We are watching you.")
 
     def _extract_code_context(self, tb):

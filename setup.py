@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="desicon-grumpy",
-    version="1.0.2",
+    version="1.0.3",
     author="Desicon Platform",
     author_email="hello@desicon.ai",
     description="Zero-config AI SRE teammate that aggressively complains about your crashes.",
