@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="desicon_grumpy",
-    version="1.0.0",
+    name="desicon-grumpy",
+    version="1.0.1",
     author="Desicon Platform",
     author_email="hello@desicon.ai",
     description="Zero-config AI SRE teammate that aggressively complains about your crashes.",
