@@ -1,6 +1,6 @@
 # Grumpy Python SDK
 
-Zero-config AI SRE teammate that aggressively complains about your crashes.
+Zero-config AI SRE companion that aggressively roasts your crashes.
 
 ## Installation
 

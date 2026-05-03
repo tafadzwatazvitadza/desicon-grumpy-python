@@ -8,7 +8,7 @@ setup(
     version="1.0.3",
     author="Desicon Platform",
     author_email="hello@desicon.ai",
-    description="Zero-config AI SRE teammate that aggressively complains about your crashes.",
+    description="Zero-config AI SRE companion that aggressively roasts your crashes.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/tafadzwatazvitadza/desicon-grumpy-python",

@@ -9,7 +9,7 @@ class GrumpyClient:
         self.environment = "development"
         self.app_name = "unknown_app"
         self._original_excepthook = None
-        self.ingest_url = "https://grumpy-backend-production.up.railway.app/api/v1/ingest"
+        self.ingest_url = "https://grumpyengine.desicon.ai/api/v1/ingest"
 
     def init(self, api_key: str, app_name: str, environment: str = "production", ingest_url: str = None):
         self.api_key = api_key
