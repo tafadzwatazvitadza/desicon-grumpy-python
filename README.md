@@ -49,14 +49,14 @@ The Sensitivity Dialer controls how much noise Grumpy generates. Set it in two p
   ```
 
 ## 4. Grumpy Rescue Engine
-When the Rescue Engine is enabled (via Project Settings), Grumpy doesn't just send you an alert. It instructs your connected AI to generate a functional, sandboxed JavaScript hotfix that fixes the logical error.
+When the Rescue Engine is enabled (via Project Settings), Grumpy doesn't just send you an alert. It instructs your connected AI to generate a functional, sandboxed JavaScript fix that addresses the logical error. The fix is minified and encrypted before leaving the server—only your SDK (holding the same API key) can decrypt and execute it.
 
-This patch is saved to the Grumpy backend. The next time any user loads your client application, the Grumpy SDK automatically fetches all active patches and applies them in memory before your code runs. This means you can hotfix logic errors across the globe with zero downtime, no redeployments, and complete sandboxed safety.
+Each fix is uniquely identified (grp_fix_xxxx) and location-aware: the same error type at two different code locations gets two separate fixes. If a fix fails to apply, the SDK automatically reports the failure, the bad fix is scrubbed server-side, and a fresh fix is generated on the next occurrence. No stale fixes, no fix-the-fix loops.
 
 - 1. Enable 'Grumpy Rescue Engine' in your Project settings.
 - 2. Ensure you have an AI Provider configured in settings.
-- 3. When an unhandled error occurs, Grumpy will generate a `<RESCUE_PATCH>`.
-- 4. The SDK downloads and applies this patch on the next client load, silently fixing the bug for everyone else.
+- 3. When an unhandled error occurs, Grumpy generates an encrypted rescue fix.
+- 4. The SDK decrypts and applies this fix in memory—invisible to network inspectors, DevTools, and MITM proxies.
 
 ### Stack Compatibility & Frameworks
 The Rescue Engine dynamically patches JavaScript bugs in the browser, but it is fully compatible with ANY backend stack.
@@ -139,5 +139,19 @@ Sign up for a free Grumpy account to claim and track your public npm/pip package
 Enable this feature within your project settings so that genuine errors from external packages are automatically sent to the maintainers.
 ```text
 Dashboard → Settings → Enable 'Not My Fault'
+```
+
+## 9. Sandbox Testing
+Use your Sandbox project to test Grumpy's ingestion and AI analysis without triggering webhooks or skewing your live analytics. Sandbox API keys always start with sandbox_ and can be found in your Dashboard. You can also test everything interactively in the Playground.
+
+```python
+from grumpy_ai import grumpy
+
+grumpy.init(
+    api_key="sandbox_YOUR_KEY",
+    app_name="Test App",
+    environment="development",
+    endpoint="https://grumpyengine.desicon.ai/api/v1/sandbox/ingest"
+)
 ```
 
